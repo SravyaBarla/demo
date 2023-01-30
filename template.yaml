@@ -4,7 +4,7 @@ Description: >
   serverless-bc-inference
   SAM Template for serverless-bc-inference Lambda function for lambda_function serveless inference
 Resources:
-  XGBoostInferenceFunction:
+  LambdaFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
       CodeUri: /
@@ -13,6 +13,6 @@ Resources:
       Timeout: 60
       MemorySize: 256
 Outputs:
-  XGBoostInferenceFunction:
+  LambdaFunction:
     Description: "lambda_function Inference Lambda Function ARN"
     Value: !GetAtt lambda_function.Arn
