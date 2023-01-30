@@ -3,15 +3,6 @@ Transform: AWS::Serverless-2016-10-31
 Description: >
   serverless-bc-inference
   SAM Template for serverless-bc-inference Lambda function for lambda_function serveless inference
-Parameters:
-  SecurityGroupIds:
-    Type: CommaDelimitedList
-    Default: sg-0954e57a2a15bee3a
-  SubnetIDs:
-    Type: CommaDelimitedList
-    Description: The list of SubnetIDs in your Virtual Private Cloud (VPC)
-    Default: subnet-05f266e00a019717f,subnet-032244c407a1536e4,subnet-03c60e04e8dc41d5a
-
 Resources:
   XGBoostInferenceFunction:
     Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
@@ -21,21 +12,6 @@ Resources:
       Runtime: python3.8
       Timeout: 60
       MemorySize: 256
-      VpcConfig:
-        SecurityGroupIds: !Ref SecurityGroupIds
-        SubnetIds: !Ref SubnetIDs
-      Policies:
-      - Statement:
-        - Sid: AWSLambdaVPCAccessExecutionRole
-          Effect: Allow
-          Action:
-            - logs:CreateLogGroup
-            - logs:CreateLogStream
-            - logs:PutLogEvents
-            - ec2:CreateNetworkInterface
-            - ec2:DescribeNetworkInterfaces
-            - ec2:DeleteNetworkInterface
-          Resource: "*"
 Outputs:
   XGBoostInferenceFunction:
     Description: "lambda_function Inference Lambda Function ARN"
