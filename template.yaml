@@ -12,7 +12,3 @@ Resources:
       Runtime: python3.8
       Timeout: 60
       MemorySize: 256
-Outputs:
-  LambdaFunction:
-    Description: "lambda_function Inference Lambda Function ARN"
-    Value: !GetAtt lambda_function.Arn
